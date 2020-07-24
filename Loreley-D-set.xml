@@ -1,0 +1,929 @@
+<?xml version="1.0"?>
+<!--
+************************************************************************
+Loreley-D Testplatform
+Peter Brendt (JWocky)
+
+based on: 
+SU-27 by Lee Elliott (model)
+
+The 2020 rework
+After some years of absence, I need a testbed again because FG changed over the years, new ideas come up, thus, the Loreley returns to her old role as testbed for systems, autopilots, engines and whatnot, but so much has changed and my absence from plane tinkering was so long, I need effectively to relearn a lot of things. Thus, the JH-Loreley is again the testbed for the JH.
+
+JWocky, July 2020
+
+************************************************************************
+-->
+
+<PropertyList>
+
+	<sim>
+		<description>Loreley Voodoomaster</description>
+		<author type="string">Peter Brendt (rework FDM, systems)</author>
+		<author type="string">Lee Elliot (model)</author>
+
+		<aircraft-version>V02.00.01</aircraft-version>
+		<minimum-fg-version>2018.2.1</minimum-fg-version>
+		<status>Alpha</status>
+	  
+		<rating>
+			<FDM type="int">     0 </FDM>
+			<systems type="int"> 0 </systems>
+			<cockpit type="int"> 0 </cockpit>
+			<model type="int">   0</model>
+		</rating>
+
+		<flight-model>jsb</flight-model>
+		<aero>Aero/Loreley-D</aero>
+	  
+		<!-- Splash screen while loading -->
+		<startup>
+			<splash-texture>Splashes/LoreleyD.png</splash-texture>
+		</startup>
+
+		<!-- Settings for model -->
+		<model>
+			<!-- Path to main model file -->
+			<path>Aircraft/JH-Loreley/Models/Loreley-D.xml</path>
+
+			<!-- String variable to hold current livery -->
+			<livery>
+				<file type="string">grey</file>
+			</livery>
+
+        		<nozzle-animation type="float">1</nozzle-animation>
+
+			<!-- JPack: push forces for Voodoomaster Pushback -->
+			<pushback>
+				<kp type="double">300</kp>
+				<ki type="double">0</ki>
+				<kd type="double">0</kd>
+				<position-norm type="double">0</position-norm>
+				<enabled type="bool">false</enabled>
+			</pushback>
+
+
+		</model>
+
+		<!-- Subsection for submodels -->
+		<!-- submodels>
+			<serviceable type="bool">1</serviceable>
+			<path>Aircraft/JPack/Voodoomaster/Services/Military/MilitarySub.xml</path>
+		</submodels -->  
+
+		<!-- submodels>
+			<serviceable type="bool">1</serviceable>
+			<path>Aircraft/Loreley/Models/Stores/submodels.xml</path>
+			<path>Aircraft/Loreley/Loreley-submodels.xml</path>
+		</submodels -->  
+
+		<!-- basic startup settings for sim -->
+		<freeze>
+			<fuel>true</fuel>	<!-- default is false -->
+		</freeze>
+
+		<chase-distance-m type="double" archive="y">-30.0</chase-distance-m>
+
+		<sound>
+			<path>Aircraft/Loreley/Sounds/Loreley-sound.xml</path>
+		</sound>
+
+		<autostart>
+			<started>0</started>
+		</autostart>
+
+		<!-- Flap settings -->
+		<flaps>
+			<setting>0.000</setting>
+			<setting>0.222</setting>
+			<setting>0.333</setting>
+			<setting>0.444</setting>
+			<setting>0.555</setting>
+			<setting>0.666</setting>
+			<setting>0.777</setting>
+			<setting>0.888</setting>
+			<setting>1.000</setting>
+		</flaps>
+
+		<virtual-cockpit archive="y">true</virtual-cockpit>
+
+		<instrumentation include="Systems/instrumentation.xml">
+			<!-- illumination>
+				<settings>
+					<lcd-brightness-offset type="double">0.25</lcd-brightness-offset>
+					<led-brightness-offset type="double">0.25</led-brightness-offset>
+				</settings>
+				<lcd-brightness type="double">0.75</lcd-brightness>
+				<led-brightness type="double">0.75</led-brightness>
+				<master-brightness type="double">0.74</master-brightness>
+			</illumination -->
+ 
+			<!-- rwr>
+				<display-lighting-intens type="double">0.4</display-lighting-intens>
+				<symbology-lighting-intens type="double">1</symbology-lighting-intens>
+			</rwr -->
+
+			<!-- enav>
+				<selected type="int">3</selected>
+			</enav -->
+
+			<!-- radar>
+				<range type="int" archive="y">40</range>
+				<range-factor type="double" archive="n">0.001888</range-factor>
+				<minimized type="bool" archive="y">false</minimized>
+				<selected type="int">3</selected>
+
+				<enabled type="bool">true</enabled>
+				<az-field type="double">120</az-field>
+				<range type="double">150</range>
+				<range-selected type="double">50</range-selected>
+				<radar2-range type="double">150</radar2-range>
+				<display-rdr type="bool">true</display-rdr>
+				<radar-standby type="int">3</radar-standby>
+				<mode>
+					<rws type="bool">true</rws>
+					<tws-auto type="bool">false</tws-auto>
+				</mode>
+			</radar --> 
+
+			<!-- radar2>
+				<sweep-width-m type="double">0.0844</sweep-width-m>
+				<range-width-m type="double">0.0846</range-width-m>
+				<radius-ppi-display-m type="double">0.0846</radius-ppi-display-m>
+				<hud-eye-dist-m type="double">0.6705</hud-eye-dist-m>
+				<hud-radius-m type="double">0.071</hud-radius-m>
+			</radar2 -->
+
+			<!-- radar-awg-9>
+				<ccm-mode-spl type="bool">false</ccm-mode-spl>
+				<ccm-mode-alt-dhf type="bool">false</ccm-mode-alt-dhf>
+				<ccm-mode-trs type="bool">false</ccm-mode-trs>
+				<display-rdr type="bool">true</display-rdr>
+				<display-ir type="bool">false</display-ir>
+				<display-iff type="bool">false</display-iff>
+				<mode type="string">PDS</mode --> <!-- PDS, RWS, TWS, PDSTT, PSTT, VSL -->
+				<!-- ant-trk-light type="bool">false</ant-trk-light>
+				<rd-rot-light type="bool">false</rd-rot-light>
+				<jat-light type="bool">false</jat-light>
+				<irot-light type="bool">false</irot-light>
+			</radar-awg-9 -->
+	
+			<!--	
+			<transponder>
+				<standby type="bool">false</standby>
+				<interrogator-standby type="bool">false</interrogator-standby>
+				<modes>
+					<mode-1>
+						<interrogate type="bool">true</interrogate>
+						<respond type="bool">true</respond>
+						<code type="int">78</code>
+					</mode-1>
+					<mode-3A>
+						<interrogate type="bool">true</interrogate>
+						<respond type="bool">true</respond>
+						<code type="int">1001</code>
+					</mode-3A>
+					<mode-C>
+						<interrogate type="bool">true</interrogate>
+						<respond type="bool">true</respond>
+						<pressure-altitude type="int">0</pressure-altitude>
+					</mode-C>
+				</modes> 
+			</transponder>
+			-->
+
+			<!-- MDEF>
+				<subsystem-selected type="string">aids</subsystem-selected>
+			</MDEF -->
+
+			<!-- magnetic-compass>
+				<bookmark-heading-deg type="double">43.0</bookmark-heading-deg>
+			</magnetic-compass -->
+
+			<!-- tacan>
+				<power type="bool">1</power>
+			</tacan -->
+
+			<!-- warnings>
+				<warning-suppress type="bool">false</warning-suppress>
+				<attention-lights type="bool">false</attention-lights>
+				<signals>
+					<cat-1-warning type="bool">false</cat-1-warning>
+					<cat-2-warning type="bool">false</cat-2-warning> 
+					<cat-3-warning type="bool">false</cat-3-warning> 
+					<cat-4-warning type="bool">false</cat-4-warning>   
+				</signals>
+				<flags>
+					<gear-limit type="bool">true</gear-limit>
+				</flags>
+			</warnings -->
+  
+			<!-- efis>
+				<ecam>
+						<display-mode type="string">FUEL</display-mode>
+				</ecam>
+				<nd>
+						<display-mode type="string">VOR</display-mode>
+						<display-mode-knob type="int">2</display-mode-knob>
+						<display-range type="int">40</display-range>
+				</nd>
+				<input>
+					<vor-adf-1 type="int">1</vor-adf-1>
+					<vor-adf-2 type="int">1</vor-adf-2>
+					<CSTR type="bool">1</CSTR>
+					<WPT type="bool">1</WPT>
+					<VORD type="bool">1</VORD>
+					<NDB type="bool">1</NDB>
+					<ARPT type="bool">1</ARPT>
+					<WX type="bool">1</WX>
+					<TERR type="bool">1</TERR>
+					<TRAF type="bool">1</TRAF>
+					<taxi type="bool">1</taxi>
+				</input>
+			</efis -->
+		</instrumentation>
+
+		<!-- Integrated Systems -->
+		<systems>
+
+			<autopilot>
+				<path>Aircraft/JPack/Voodoomaster/Systems/SYS9_0_autopilot.xml</path>
+			</autopilot>
+
+			<electrical>
+				<path>Aircraft/Generic/generic-electrical.xml</path>
+			</electrical>
+
+		</systems>
+
+		<!-- mp-systems>
+			<radar-enabled type="bool">true</radar-enabled>
+			<ecm-rwr-enabled type="bool">true</ecm-rwr-enabled>
+			<combat-enabled type="bool">true</combat-enabled>
+		</mp-systems -->	
+
+		<!-- TFA popup dialogue -->
+		<!-- gui>
+			<dialogs>
+				<TFA-popup>
+					<config>
+						<dialog include="Dialogs/TFA-popup.xml"/>
+					</config>
+				</TFA-popup>
+			</dialogs>
+		</gui -->
+
+		<!-- AoA Indexer target 7.0 deg -->
+		<!-- aoa-indexer -->
+			<!-- too-slow-deg>8.5</too-slow-deg -->  <!-- target +1.5 deg -->
+		        <!-- slow-deg>7.5</slow-deg -->          <!-- target +0.5 deg -->         
+		        <!-- fast-deg>6.5</fast-deg -->          <!-- target -0.5 deg -->         
+		        <!-- too-fast-deg>-5.5</too-fast-deg -->  <!-- target -1.5 deg -->         
+		<!-- /aoa-indexer -->
+
+		<!-- MP section if exists -->
+		<multiplay>
+			<chat_display>1</chat_display>
+			<generic> 
+				<int n="0" alias="/sim/crashed" />
+				<!-- Beacon on -->
+					<int n="1" alias="/controls/lighting/beacon" />
+					<!-- Landing lights on -->
+					<int n="2" alias="/controls/lighting/landing-lights" />
+					<!-- Taxi light on -->
+					<int n="3" alias="/controls/lighting/taxi-light" />
+					<!-- Nav lights on -->
+					<int n="4" alias="/controls/lighting/nav-lights" />
+				<!-- Engine Status -->
+				<int n="5" alias="/engines/engine[0]/state" />
+				<int n="6" alias="/engines/engine[1]/state" />
+				<int n="7" alias="/sim/crashed" />
+        
+				<float n="0" alias="/surface-positions/left-taileron-pos-norm"/>
+				<float n="1" alias="/surface-positions/right-taileron-pos-norm"/>
+				<float n="2" alias="/surface-positions/left-flap-pos-norm"/>
+				<float n="3" alias="/surface-positions/right-flap-pos-norm"/>
+				<float n="4" alias="/sim/model/nozzle-animation"/>
+				<float n="8" alias="/engines/engine[0]/afterburner" /> <!-- Reheat Left Engine -->
+				<float n="9" alias="/engines/engine[1]/afterburner" /> <!-- Reheat Right Engine -->
+			</generic>
+		</multiplay>
+		
+		<!-- HUD section if exists -->
+		<hud>
+			<enable3d>false</enable3d>
+			<path n="1">Aircraft/Loreley/Hud/hud.xml</path>
+			<visibility n="1">true</visibility>
+			<palette>
+				<color n="0">
+					<alpha type="float">0.85</alpha>
+					<antialiased type="bool">true</antialiased>
+					<brightness type="float">0.85</brightness>
+					<transparent type="bool">true</transparent>
+					<red type="float">0.38</red>
+					<green type="float">1.0</green>
+					<blue type="float">0.22</blue>
+				</color>
+	
+				<color n="1">
+					<alpha type="float">0.85</alpha>
+					<antialiased type="bool">true</antialiased>
+					<brightness type="float">0.85</brightness>
+					<transparent type="bool">true</transparent>
+					<red type="float">1.0</red>
+					<green type="float">0.2</green>
+					<blue type="float">0.0</blue>
+				</color>
+			</palette>
+ 
+			<clipping>
+				<left type="double">-65</left>
+				<right type="double">70</right>
+				<top type="double">40</top>
+				<bottom type="double">-75</bottom>
+			</clipping>
+		</hud>
+
+		<!-- Blackout rendering due to G-forces -->		  
+		<rendering>
+			<redout>
+				<parameters>
+					<blackout-complete-g>9.1</blackout-complete-g>
+					<blackout-onset-g>7.5</blackout-onset-g>
+				</parameters>
+			</redout>
+		</rendering>
+
+
+		<view n="0">
+			<internal archive="y">true</internal>
+			<config>
+				<x-offset-m archive="y">0.00</x-offset-m>
+				<y-offset-m archive="y">1.45</y-offset-m>
+				<z-offset-m archive="y">5.02</z-offset-m>
+				<pitch-offset-deg>0</pitch-offset-deg>
+				<default-field-of-view-deg>55</default-field-of-view-deg>
+			</config>
+		</view>
+	  
+		<view n="100">
+			<name>Pilot cam</name>
+			<internal archive="y">false</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<x-offset-m archive="y">0.00</x-offset-m>
+				<y-offset-m archive="y">1.45</y-offset-m>
+				<z-offset-m archive="y">4.3</z-offset-m>
+				<pitch-offset-deg>0</pitch-offset-deg>
+				<heading-offset-deg>180</heading-offset-deg>
+				<default-field-of-view-deg>95</default-field-of-view-deg>
+			</config>
+		</view>
+
+		<!-- Shift the camera target point back -->
+		<view n="1">
+			<config>
+				<target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
+				<pitch-offset-deg archive="y">6</pitch-offset-deg>
+			</config>
+		</view>
+
+		<view n="2">
+			<config>
+				<y-offset-m archive="y" type="double">5.4</y-offset-m>
+				<z-offset-m archive="y">-19.7</z-offset-m>
+				<target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
+				<pitch-offset-deg archive="y">6</pitch-offset-deg>
+			</config>
+		</view>
+
+		<view n="3">
+			<config>
+				<y-offset-m archive="y" type="double">5.4</y-offset-m>
+				<z-offset-m archive="y">-19.7</z-offset-m>
+				<target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
+				<pitch-offset-deg archive="y">6</pitch-offset-deg>
+			</config>
+		</view>
+
+		<view n="4">
+			<config>
+				<y-offset-m archive="y" type="double">5.4</y-offset-m>
+				<z-offset-m archive="y">-19.7</z-offset-m>
+				<target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
+				<pitch-offset-deg archive="y">6</pitch-offset-deg>
+			</config>
+		</view>
+	
+		<view n="5">
+			<config>
+				<y-offset-m archive="y" type="double">5.4</y-offset-m>
+				<z-offset-m archive="y">-19.7</z-offset-m>
+				<target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
+				<pitch-offset-deg archive="y">6</pitch-offset-deg>
+			</config>
+		</view>
+	
+		<view n="6">
+			<config>
+				<y-offset-m archive="y" type="double">5.4</y-offset-m>
+				<z-offset-m archive="y">-19.7</z-offset-m>
+				<target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
+				<pitch-offset-deg archive="y">6</pitch-offset-deg>
+			</config>
+		</view>
+	  
+		<view n="7">
+			<config>
+				<y-offset-m archive="y" type="double">5.4</y-offset-m>
+				<z-offset-m archive="y">-19.7</z-offset-m>
+				<target-z-offset-m archive="y" type="double">10.0</target-z-offset-m>
+				<pitch-offset-deg archive="y">6</pitch-offset-deg>
+			</config>
+		</view>
+
+		<!-- Help -->
+		<help>
+			<title>Loreley-D</title>
+			<line>Aircraft spawns with "Operational" fuel values = 50% of maximum.</line>
+			<line></line>
+			<line>Cruise speed: 870 mph (1,400 km/h) ( 750kts ) at 32,780 ft (10,000m) </line> 
+			<line>Max LevelSpeed  at altitude: 1,490 mph (2,400 km/h)at 32,780 ft (10,000 m), Mach 2.3</line>
+			<line>FCS not yet installed on this aircraft.</line>
+			<line></line>
+			<line> </line>
+			<line></line>
+	
+			<key>
+				<name>}</name>
+				<desc>Startup/Shut down engines</desc>
+			</key>
+				
+			<key>
+				<name>c</name>
+				<desc>Toggle canopy</desc>
+			</key>
+	
+			<key>
+				<name>l</name>
+				<desc>Launch Flares</desc>
+			</key>
+	
+			<line></line>
+		</help>
+
+		<menubar include="Dialogs/pilot_menu.xml"/>
+
+		<!-- fuel-fraction>0.6</fuel-fraction -->
+	  
+	</sim>
+
+	<!-- Engine settings -->
+	<engines>
+		<engine n="0">	<!-- Saturn 127 left -->
+			<engine-num type="int">0</engine-num>
+			<throttle-norm type="float">0</throttle-norm>
+			<reheat-norm type="float">0</reheat-norm>
+			<serviceable type="bool">true</serviceable>
+		</engine>
+		<engine n="1">	<!-- Saturn 127 right -->
+			<engine-num type="int">1</engine-num>
+			<throttle-norm type="float">0</throttle-norm>
+			<reheat-norm type="float">0</reheat-norm>
+			<serviceable type="bool">true</serviceable>
+		</engine>
+		<engine n="2">	<!-- Rolls Royce Trent 800 on 3 left -->
+			<engine-num type="int">2</engine-num>
+			<throttle-norm type="float">0</throttle-norm>
+			<reheat-norm type="float">0</reheat-norm>
+			<serviceable type="bool">true</serviceable>
+		</engine>
+		<engine n="3">	<!-- Rolls Royce Trent 800 on 3 right -->
+			<engine-num type="int">3</engine-num>
+			<throttle-norm type="float">0</throttle-norm>
+			<reheat-norm type="float">0</reheat-norm>
+			<serviceable type="bool">true</serviceable>
+		</engine>
+		<engine n="4">	<!-- Rolls Royce Trent 1000 on 4 left -->
+			<engine-num type="int">4</engine-num>
+			<throttle-norm type="float">0</throttle-norm>
+			<reheat-norm type="float">0</reheat-norm>
+			<serviceable type="bool">true</serviceable>
+		</engine>
+		<engine n="5">	<!-- Rolls Royce Trent 1000 on 4 right -->
+			<engine-num type="int">5</engine-num>
+			<throttle-norm type="float">0</throttle-norm>
+			<reheat-norm type="float">0</reheat-norm>
+			<serviceable type="bool">true</serviceable>
+		</engine>
+	</engines>
+
+	<!-- Fuel Tank indexes -->
+	<consumables>
+		<fuel>
+			<tank n="0">
+				<!-- #### tank names -->
+				<tank-num type="int">0</tank-num>
+				<level-gal_us archive="y">869</level-gal_us>
+			</tank>
+			<tank n="1">
+				<tank-num type="int">1</tank-num>
+				<level-gal_us archive="y">1163</level-gal_us>
+			</tank>
+			<tank n="2">
+				<tank-num type="int">2</tank-num>
+				<level-gal_us archive="y">928</level-gal_us>
+			</tank>
+			<tank n="3">
+				<tank-num type="int">3</tank-num>
+				<level-gal_us archive="y">928</level-gal_us>
+			</tank>
+			<tank n="4">
+				<tank-num type="int">4</tank-num>
+				<level-gal_us archive="y">147</level-gal_us>
+			</tank>
+			<tank n="5">
+				<tank-num type="int">5</tank-num>
+				<level-gal_us archive="y">147</level-gal_us>
+			</tank>
+			<tank n="6">
+				<tank-num type="int">6</tank-num>
+				<level-gal_us archive="y">67</level-gal_us>
+			</tank>
+			<tank n="7">
+				<tank-num type="int">7</tank-num>
+				<level-gal_us archive="y">67</level-gal_us>
+			</tank>
+		</fuel>
+	</consumables>
+  
+	<payload>
+
+		<weight n="0">
+			<name>Pilot</name>
+			<weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]" />
+			<min-lb type="double">  140</min-lb>
+			<max-lb type="double">  240</max-lb>
+		</weight>
+
+		<weight n="1">
+			<name>pylon1.L</name>
+			<weight-lb type="int">0</weight-lb>
+			<selected>none</selected>
+			<opt>
+				<name>none</name>
+				<lbs>0</lbs>
+			</opt>
+		</weight> 
+
+		<weight n="2">
+			<name>pylon2.L</name>
+			<weight-lb>0</weight-lb>
+			<selected>none</selected>
+			<opt>
+				<name>none</name>
+				<lbs>0</lbs>
+			</opt>
+		</weight>
+
+		<weight n="3">
+			<name>pylon3.L</name>
+			<weight-lb>0</weight-lb>
+			<selected>none</selected>
+			<opt>
+				<name>none</name>
+				<lbs>0</lbs>
+			</opt>
+			<opt>
+				<name>Test: RR Trent 800</name>
+				<lbs>16500</lbs>
+			</opt>
+		</weight>
+
+		<weight n="4">
+			<name>pylon4.L</name>
+			<weight-lb>0</weight-lb>
+			<selected>none</selected>
+			<opt>
+				<name>none</name>
+				<lbs>0</lbs>
+			</opt>
+			<opt>
+				<name>Test: RR Trent 1000</name>
+				<lbs>12710</lbs>
+			</opt>
+		</weight>
+	
+		<weight n="5">
+			<name>pylon5.L</name>
+			<weight-lb>0</weight-lb>
+			<selected>none</selected>
+			<opt>
+				<name>none</name>
+				<lbs>0</lbs>
+			</opt>
+		</weight>
+
+		<weight n="6">
+			<name>pylon.C</name>
+			<weight-lb>0</weight-lb>
+			<selected>none</selected>
+			<opt>
+				<name>none</name>
+				<lbs>0</lbs>
+			</opt>
+		</weight>
+
+		<weight n="7">
+			<name>pylon5.R</name>
+			<weight-lb>0</weight-lb>
+			<selected>none</selected>
+			<opt>
+				<name>none</name>
+				<lbs>0</lbs>
+			</opt>
+		</weight>
+
+		<weight n="8">
+			<name>pylon4.R</name>
+			<weight-lb>0</weight-lb>
+			<selected>none</selected>
+			<opt>
+				<name>none</name>
+				<lbs>0</lbs>
+			</opt>
+			<opt>
+				<name>Test: RR Trent 1000</name>
+				<lbs>12710</lbs>
+			</opt>
+		</weight>
+
+		<weight n="9">
+			<name>pylon3.R</name>
+			<weight-lb>0</weight-lb>
+			<selected>none</selected>
+			<opt>
+				<name>none</name>
+				<lbs>0</lbs>
+			</opt>
+			<opt>
+				<name>Test: RR Trent 800</name>
+				<lbs>16500</lbs>
+			</opt>
+		</weight>
+
+		<weight n="10">
+			<name>pylon2.R</name>
+			<weight-lb>0</weight-lb>
+			<selected>none</selected>
+			<opt>
+				<name>none</name>
+				<lbs>0</lbs>
+			</opt>
+		</weight>
+
+		<weight n="11">
+			<name>pylon1.R</name>
+			<weight-lb>0</weight-lb>
+			<selected>none</selected>
+			<opt>
+				<name>none</name>
+				<lbs>0</lbs>
+			</opt>
+		</weight>
+	</payload>
+
+	<limits>
+		<mass-and-balance>
+			<maximum-takeoff-mass-lbs>93000</maximum-takeoff-mass-lbs>
+		</mass-and-balance>
+	</limits>
+
+	<!-- Start with the Parking Brake on -->
+	<controls>
+		<engines>
+			<engine n="0">
+				<throttle type="double">0</throttle>
+				<reheat type="double">0</reheat>
+			</engine>
+			<engine n="1">
+				<throttle type="double">0</throttle>
+        			<reheat type="double">0</reheat>
+        		</engine>
+		</engines>
+		<gear>
+			<brake-parking type="double">1</brake-parking>
+		</gear>
+	</controls>
+	  
+	<input>
+		<keyboard>
+
+			<key n="1">
+				<name>Ctrl-A</name>
+				<desc>AP off</desc>
+				<binding>
+					<command>property-assign</command>
+					<property>/autopilot/locks/altitude</property>
+					<value></value>
+				</binding>
+				<binding>
+					<command>property-assign</command>
+					<property>/autopilot/locks/heading</property>
+					<value></value>
+				</binding>
+				<binding>
+					<command>property-assign</command>
+					<property>/autopilot/locks/speed</property>
+					<value></value>
+				</binding>
+			</key>
+
+			<key n="2">
+				<name>Ctrl-B</name>
+				<desc>Toggle speedbrakes.</desc>
+				<binding>
+					<command>property-cycle</command>
+					<property>controls/flight/speedbrake</property>
+					<value>0</value>
+					<value>1</value>
+				</binding>
+			</key>
+		
+			<key n="70">
+				<name>F</name>
+				<desc>FuelHose</desc>
+				<binding>
+					<command>nasal</command>
+					<script>Loreley.FuelHose.toggle();</script>
+				</binding>
+			</key> 
+
+			<key n="99">
+				<name>c</name>
+				<desc>Canopy</desc>
+				<binding>
+					<command>nasal</command>
+					<script>Loreley.canopy.toggle();</script>
+				</binding>
+			</key>
+    
+			<key n="108">
+				<name>l</name>
+				<desc>Trigger flare release</desc>
+				<binding>
+					<command>property-toggle</command>
+					<property>ai/submodels/submodel/flare-release</property>
+					<value type="bool">true</value>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>property-assign</command>
+						<property>ai/submodels/submodel/flare-release</property>
+						<value type="bool">false</value>
+					</binding>
+				</mod-up>
+			</key>
+  
+			<key n="125">
+				<name>}</name>
+				<desc>Engine Autostart</desc>
+				<binding>
+					<command>nasal</command>
+					<script>
+						Loreley.autostart();
+					</script>
+				</binding>
+			</key>
+
+			<key n="127">
+				<name>Delete</name>
+				<desc>Toggle thrust reverser.</desc>
+				<binding>
+					<command>property-cycle</command>
+					<property>fdm/jsbsim/propulsion/engine/reverser-angle-rad</property>
+					<value>180</value>
+					<value>0</value>
+				</binding>
+				<binding>
+					<command>property-cycle</command>
+					<property>fdm/jsbsim/propulsion/engine[1]/reverser-angle-rad</property>
+					<value>180</value>
+					<value>0</value>
+				</binding>
+			</key>
+ 		</keyboard>
+	</input>
+
+	<!-- Stand-Alone Systems -->
+	<!-- systems>
+		<refuel>
+			<type>probe</type>
+			<serviceable type="bool">true</serviceable>
+		</refuel>
+	</systems --> 
+		
+	<!-- AI extensions -->
+	<!-- ai>
+		<submodels>
+			<trajectory-markers type="bool">0</trajectory-markers>
+		</submodels>
+	</ai -->
+	
+	<!-- environment>
+		<turbulence>
+		<use-cloud-turbulence>true</use-cloud-turbulence>
+		</turbulence>
+	</environment -->
+   
+	<!-- Autopilot settings -->
+	<autopilot>
+
+		<settings>
+			<kts-mach-select type="string">kts</kts-mach-select>
+			<max-pitch type="double">20.0</max-pitch>
+			<min-pitch type="double">-15.0</min-pitch>
+			<bank-angle-limit-deg type="int">65</bank-angle-limit-deg>
+		</settings>
+
+		<internal>
+			<target-pitch-deg type="double">0.00</target-pitch-deg>
+			<max-pitch type="double">20.0</max-pitch>
+			<min-pitch type="double">-15.0</min-pitch>
+		</internal>
+
+	</autopilot>
+
+	<!-- Voodoomaster plane specific initializations -->
+	<voodoomaster>
+		<steering-wheel type="int">0</steering-wheel>
+		<steering-type type="string">TriCycle</steering-type>	<!-- Alternativ: Taildragger-lock or Taildragger-steer -->
+		<model-direction>0.00</model-direction>
+		<pushback>
+			<activated type="bool">false</activated>
+		</pushback>
+	</voodoomaster>
+
+	<nasal>
+		<!-- eno>
+			<file>Aircraft/JH-Loreley/Nasal/eno.nas</file>
+		</eno -->
+		<!-- lights>
+			<file>Aircraft/JH-Loreley/Nasal/Lights.nas</file>
+		</lights -->
+
+		<!-- aar> 
+			<file>Aircraft/Generic/aar.nas</file>
+		</aar -->
+		<!-- rwr>
+			<file>Aircraft/JH-Loreley/Models/Interior/Instruments/mfd/radar/rwr.nas</file>
+		</rwr --> 
+		<!--radardist>
+			<file>Aircraft/Instruments-3d/radardist/radardist.nas</file>
+		</radardist -->
+		<!-- radar>
+			<file>Aircraft/JH-Loreley/Models/Interior/Instruments/mfd/radar/radar.nas</file> 
+		</radar -->
+		<!-- radar2>
+			<file>Aircraft/JH-Loreley/Models/Interior/Instruments/mfd/radar/radar2.nas</file>
+		</radar2c -->
+		<!-- enav>
+			<file>Aircraft/JH-Loreley/Nasal/enav.nas</file>
+		</enav -->
+		<!-- terrain-map>
+			<file>Aircraft/JH-Loreley/Nasal/terrain-map.nas</file>
+		</terrain-map --> 
+		<!-- low>
+			<file>Aircraft/JH-Loreley/Nasal/low.nas</file>
+		</low --> 
+		<!-- phd>
+			<file>Aircraft/JH-Loreley/Nasal/phd.nas</file>
+		</phd -->
+		<!-- tfs>
+			<file>Aircraft/JH-Loreley/Nasal/terrain_follow.nas</file>
+		</tfs -->
+		<!-- instrumentation>
+			<file>Aircraft/JH-Loreley/Nasal/instrumentation.nas</file>
+			<file>Aircraft/JH-Loreley/Nasal/ILS-31_sup.nas</file>
+		</instrumentation -->
+	
+		<!-- maintenance>
+			<file>Aircraft/JH-Loreley/Nasal/maintenance.nas</file>
+		</maintenance -->
+
+		<livery>
+			<file>Aircraft/JH-Loreley/Nasal/Loreley-B/Liveries.nas</file>
+		</livery>
+
+		<Loreley>
+			<!-- file>Aircraft/JH-Loreley/Nasal/refuel.nas</file -->
+			<!-- file>Aircraft/JH-Loreley/Nasal/Explode.nas</file -->
+			<file>Aircraft/Loreley/Nasal/Loreley-B/Loreley.nas</file>
+			<file>Aircraft/Loreley/Nasal/Loreley-B/Engines.nas</file>
+			<file>Aircraft/Loreley/Nasal/Loreley-B/Payload.nas</file>
+		</Loreley>
+	</nasal>   
+
+
+</PropertyList>

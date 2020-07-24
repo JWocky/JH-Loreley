@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<PropertyList>
+
+	<sim>
+		<model>
+			<livery>
+				<name type="string">Jungle Book</name>
+				<texture>Liveries/green.jpg</texture>
+			</livery>
+		</model>
+	</sim>
+
+</PropertyList>
